@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message for You 🌹</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+        h2 { color: #d63384; }
+        #message {
+            display: none;
+            padding: 20px;
+            border: 2px solid #d63384;
+            background: #fff;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #d63384;
+        }
+        button {
+            background-color: #d63384;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b0246a;
+        }
+
+        /* Rose animation */
+        .rose {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: url('https://i.imgur.com/OqLSxRV.png') no-repeat center/contain;
+            top: -50px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🌹 Enter the Password to See the Message 🌹</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Submit</button>
+
+    <div id="message">
+        <p>Hey 😊,</p>
+        <p>I just wanted to be honest with you about something. Over time, I’ve come to really admire you—not just for your kindness 💖 and sense of humor 😂, but for the amazing person you are.</p>
+        <p>I like you a lot ❤️, and I’d love to take things beyond friendship. Would you like to be my girlfriend? 🥰</p>
+        <p>No pressure at all—I just wanted to share my feelings with you. Whatever your response, I respect and value our friendship 🤗.</p>
+        <p>Looking forward to hearing your thoughts! 😊</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            var correctPassword = "mysecret"; // Change this to your chosen password
+            if (password === correctPassword) {
+                document.getElementById("message").style.display = "block";
+                createRoses(); // Start the rose animation
+            } else {
+                alert("Incorrect password. Try again!");
+            }
+        }
+
+        // Function to create falling roses
+        function createRoses() {
+            for (let i = 0; i < 15; i++) { // Number of roses
+                let rose = document.createElement("div");
+                rose.classList.add("rose");
+                rose.style.left = Math.random() * 100 + "vw";
+                rose.style.animationDuration = (Math.random() * 3 + 2) + "s"; // Different falling speeds
+                document.body.appendChild(rose);
+            }
+        }
+    </script>
+
+</body>
+</html>
